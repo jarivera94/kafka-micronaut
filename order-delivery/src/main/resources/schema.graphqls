@@ -1,0 +1,23 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  healthCheck: String!
+}
+
+type Mutation {
+  saveOrder(orderInput: OrderInput): OrderDomain
+}
+
+input OrderInput{
+  user: String
+  products: [String]
+}
+
+type OrderDomain{
+  user: String
+  products: [String]
+  key: String
+}

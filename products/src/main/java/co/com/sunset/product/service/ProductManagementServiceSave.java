@@ -1,6 +1,6 @@
 package co.com.sunset.product.service;
 
-import co.com.sunset.product.kafka.repository.ProductKafkaProducer;
+import co.com.sunset.product.kafka.producer.ProductKafkaProducer;
 import co.com.sunset.product.models.ProductDomain;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import graphql.schema.DataFetcher;

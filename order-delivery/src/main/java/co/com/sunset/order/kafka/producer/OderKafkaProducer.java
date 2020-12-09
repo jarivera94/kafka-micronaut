@@ -1,6 +1,6 @@
-package co.com.sunset.product.kafka.repository;
+package co.com.sunset.order.kafka.producer;
 
-import co.com.sunset.product.models.ProductDomain;
+import co.com.sunset.order.models.OderDomain;
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.Topic;
@@ -10,11 +10,11 @@ import io.reactivex.Single;
 import org.apache.kafka.clients.producer.ProducerConfig;
 
 @KafkaClient(
-    id = "products-service",
+    id = "order-service",
     acks = KafkaClient.Acknowledge.ALL,
     properties = @Property(name = ProducerConfig.RETRIES_CONFIG, value = "5"))
-public interface ProductKafkaProducer {
+public interface OderKafkaProducer {
 
-  @Topic("products")
-  Single<ProductDomain> saveCustomer(@KafkaKey String key, @Body ProductDomain customer);
+  @Topic("order.delivery")
+  Single<OderDomain> saveCustomer(@KafkaKey String key, @Body OderDomain customer);
 }
