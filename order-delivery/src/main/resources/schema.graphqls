@@ -13,11 +13,11 @@ type Mutation {
 
 input OrderInput{
   user: String
-  products: [String]
+  product: String
 }
 
 type OrderDomain{
   user: String
-  products: [String]
+  product: String
   key: String
 }

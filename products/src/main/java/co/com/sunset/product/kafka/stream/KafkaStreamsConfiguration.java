@@ -28,8 +28,8 @@ import org.apache.kafka.streams.state.KeyValueStore;
 @Factory
 public class KafkaStreamsConfiguration {
 
-  private static final String APPLICATION_STREAM = "customer-application-stream";
-  private static final String CLIENT_ID = "customer-client-id";
+  private static final String APPLICATION_STREAM = "product-application-stream";
+  private static final String CLIENT_ID = "product-client-id";
   private static final Function<String, String> BUILD_IDENTIFIER_BASE =
       key -> key + "-" + new SecureRandom().nextInt(100000000);
 
@@ -50,12 +50,12 @@ public class KafkaStreamsConfiguration {
     props.put(StreamsConfig.CLIENT_ID_CONFIG, BUILD_IDENTIFIER_BASE.apply(CLIENT_ID));
 
     log.info(
-        "CustomerStream::buildStream building property {} with value {}",
+        "KafkaStreamsConfiguration::buildStream building property {} with value {}",
         ConsumerConfig.CLIENT_ID_CONFIG,
         props.getProperty(ConsumerConfig.CLIENT_ID_CONFIG));
 
     log.info(
-        "CustomerStream::buildStream building property {} with value {}",
+        "KafkaStreamsConfiguration::buildStream building property {} with value {}",
         StreamsConfig.APPLICATION_ID_CONFIG,
         props.getProperty(StreamsConfig.APPLICATION_ID_CONFIG));
 
@@ -64,7 +64,7 @@ public class KafkaStreamsConfiguration {
             .groupByKey()
             .reduce(
                 (value1, value2) -> {
-                  value2.setDescription("processed by stream");
+                  value2.setMessage1("record updated");
                   return value2;
                 },
                 Materialized.<String, ProductDomain, KeyValueStore<Bytes, byte[]>>as(

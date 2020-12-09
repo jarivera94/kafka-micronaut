@@ -31,6 +31,7 @@ dependencies {
     implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
     implementation("io.micronaut:micronaut-management")
     implementation("io.micronaut.kafka:micronaut-kafka:3.0.0")
+    implementation("io.micronaut.kafka:micronaut-kafka-streams:3.0.0")
     implementation "javax.annotation:javax.annotation-api"
     implementation("io.micronaut.graphql:micronaut-graphql:2.1.0")
     implementation "org.projectlombok:lombok:1.18.10"

@@ -1,4 +1,4 @@
-package co.com.sunset.order.models;
+package co.com.sunset.oder.details.models;
 
 import java.util.List;
 import lombok.Getter;
@@ -6,9 +6,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class OderDomain {
+public class OrderDomain {
 
   private String user;
-  private List<String> products;
+  private String product;
   private String key;
 }

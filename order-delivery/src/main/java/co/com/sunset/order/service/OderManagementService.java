@@ -1,7 +1,7 @@
 package co.com.sunset.order.service;
 
 import co.com.sunset.order.kafka.producer.OderKafkaProducer;
-import co.com.sunset.order.models.OderDomain;
+import co.com.sunset.order.models.OrderDomain;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Singleton
-public class OderManagementService implements DataFetcher<CompletionStage<OderDomain>> {
+public class OderManagementService implements DataFetcher<CompletionStage<OrderDomain>> {
 
   private final OderKafkaProducer orderKafkaProducer;
   private ObjectMapper objectMapper;
@@ -25,12 +25,12 @@ public class OderManagementService implements DataFetcher<CompletionStage<OderDo
   }
 
   @Override
-  public CompletionStage<OderDomain> get(DataFetchingEnvironment environment) throws Exception {
-    final CompletableFuture<OderDomain> future = new CompletableFuture<>();
+  public CompletionStage<OrderDomain> get(DataFetchingEnvironment environment) throws Exception {
+    final CompletableFuture<OrderDomain> future = new CompletableFuture<>();
 
     Single.just(environment.getArgument("orderInput"))
         .map(input -> objectMapper.writeValueAsString(input))
-        .map(inputString -> objectMapper.readValue(inputString, OderDomain.class))
+        .map(inputString -> objectMapper.readValue(inputString, OrderDomain.class))
         .map(
             orderDomain -> {
               orderDomain.setKey(UUID.randomUUID().toString());

@@ -1,6 +1,6 @@
 package co.com.sunset.order.kafka.producer;
 
-import co.com.sunset.order.models.OderDomain;
+import co.com.sunset.order.models.OrderDomain;
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.Topic;
@@ -16,5 +16,5 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 public interface OderKafkaProducer {
 
   @Topic("order.delivery")
-  Single<OderDomain> saveCustomer(@KafkaKey String key, @Body OderDomain customer);
+  Single<OrderDomain> saveCustomer(@KafkaKey String key, @Body OrderDomain customer);
 }
