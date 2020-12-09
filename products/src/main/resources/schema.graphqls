@@ -1,0 +1,33 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  retrieveProduct(
+    productKey: String!
+  ): ProductDomain
+}
+
+type Mutation {
+  saveProduct(
+    productDomainInput: ProductDomainInput!
+    ): ProductDomain
+}
+
+input ProductDomainInput {
+  id: Int
+  name: String
+  price: Float
+  description: String
+  message1: String
+}
+
+type ProductDomain {
+  id: Int
+  name: String
+  price: Float
+  description: String
+  message1: String
+  key: String
+}
