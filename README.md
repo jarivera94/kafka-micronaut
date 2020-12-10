@@ -43,3 +43,7 @@ export BROKERS=localhost:9092
 --zookeeper localhost:2181 \
 --delete \
 --topic order.delivery
+
+
+file:///Users/alexander.rivera/Documents/training/evnt-driven/kafka-micronaut/index.html#/jael
+file:///Users/alexander.rivera/Documents/training/evnt-driven/kafka-micronaut/index.html#/andrea
